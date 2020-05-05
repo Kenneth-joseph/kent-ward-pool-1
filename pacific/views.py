@@ -8,3 +8,4 @@ from django.http import HttpResponse
 #     return render(request, 'home')
 class HomePageView(TemplateView):
     template_name = 'home.html'
+

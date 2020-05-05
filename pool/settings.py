@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pacific.apps.PacificConfig',
     'bootstrap4',
+    'users.apps.UsersConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -127,5 +129,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
-
+#assigning crispy forms to the neccessary bootstrap
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -21,7 +21,7 @@ class Event(models.Model):
     title = models.CharField(max_length=20)
     content = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, default= 1, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

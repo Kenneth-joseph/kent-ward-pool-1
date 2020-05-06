@@ -4,26 +4,36 @@
 <div class="container">
 <div class="row">
     <div class="col-md-12 col-lg-12 col-sm-12 mt-2">
-        <div class="jumbotron " style="background-color:#2471A3;letter-spacing:0.1em;">
+        <div class="jumbotron one" style="background-color:#2471A3;letter-spacing:0.1em;">
             <h3 style="font-size:20px;  ">Welcome to the ward</h3>
-            <span id="balot" style=""><i class="fas fa-vote-yea fa-2x"></i></span>
+            <span id="balot" style=""><i class="fas fa-vote-yea fa-2x"><a href="#"><span style="font-size:20px;vertical-align:middle;margin-left:10px;color:white" class="font-weight-light">4456</span></i></a></span>
 
         </div>
     </div>
 </div>
     <h2 id="ev" style="letter-spacing:0.1em;">Events</h2>
     <hr class=" my-4">
-
-    <div class="card p-2 pl-3">
+{%for event in object_list %}
+    <div class="card p-2 pl-3 mt-4 mb-3">
             <div class="card-metadata">
-                <a class = "mr-2" href="#">three</a>
-                <small class="text-muted">two</small>
+                <a class = "mr-2" href="#">{{event.author}}</a>
+                <small class="text-muted">{{event.pub_date|timesince}} AGO</small>
             </div>
         <hr>
-            <h2><a class="article-title" href="#">one</a> </h2>
-            <p class="article-content cont">content is always what i loved from the start man couldn't let it go</p>
+            <h2><a class="article-title" href="#">{{event.title}}</a> </h2>
+            <p class="article-content cont"style="font-size:15px;">{{event.content}}</p>
 
     </div>
+    {% empty %}
+
+    <div class="card p-2 pl-3">
+            <div class="card-title">
+                <h4>No events </h4>
+            </div>
+        <hr>
+        <div class="card-body">create your events <a href="#">here</a></div>
+    </div>
+{%endfor%}
 </div>
 
 {%endblock content%}

@@ -1,0 +1,37 @@
+{%extends "base.html"%}
+{% load crispy_forms_tags %}
+{%block content%}
+<div class="container">
+    <!-- Card -->
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card mt-5">
+
+  <!-- Card body -->
+  <div class="card-body p-3">
+
+    <!-- Material form register -->
+    <form method="post">
+    {% csrf_token %}
+      <p class="h4 text-center py-4">Create Event</p>
+      {{ form|crispy }}
+
+      <div class="form-group text-center">
+            <button class="btn btn-info" type="submit">Create</button>
+        </div>
+    </form>
+
+
+  </div>
+  <!-- Card body -->
+
+</div>
+<!-- Card -->
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+
+</div>
+{%endblock content%}

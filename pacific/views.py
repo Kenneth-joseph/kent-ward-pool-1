@@ -20,7 +20,7 @@ class HomePageView(ListView):
 
 class CreateEvents(CreateView):
     model = Event
-    template_name = 'home.html'
+    template_name = 'newevent.html'
     fields = ['title', 'content']
 
 

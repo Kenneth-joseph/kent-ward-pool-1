@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     TemplateView,
     ListView,
@@ -18,18 +19,29 @@ class HomePageView(ListView):
     context_object_name = 'events'
 
 
-class CreateEvents(CreateView):
+class VoterPageView(LoginRequiredMixin, ListView):
+    model = Voter
+    template_name = 'voter.html'
+    ordering = ['-pub_date']
+    context_object_name = 'voters'
+
+
+class CreateEvents(LoginRequiredMixin, CreateView):
     model = Event
     template_name = 'newevent.html'
     fields = ['title', 'content']
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
-class CreateVoter(CreateView):
+
+class CreateVoter(LoginRequiredMixin, CreateView):
     model = Voter
-    template_name = 'home.html'
+    template_name = 'voter.html'
     fields = '__all__'
 
 
-class DetailView(DetailView):
+class VoterDetailView(LoginRequiredMixin, DetailView):
     model = Voter
-    template_name = "home.html"
+    template_name = "voter.html"

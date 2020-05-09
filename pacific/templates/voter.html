@@ -1,0 +1,64 @@
+{%extends "base.html"%}
+{% load crispy_forms_tags %}
+{%block content%}
+<div class="container">
+ <h2 id="ev" style="letter-spacing:0.1em;margin-top:20px;">Voters</h2>
+    <a class="btn btn-info mr-auto" data-toggle="modal" data-target="#modalContactForm " href="{% url 'newvoter' %}" type="submit">UPDATE VOTERS</a>
+    <hr class=" my-4">
+
+    {%for voter in voters %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card mt-3 p-2">
+                <div class="card-title font-weight-bold" style="">{{voter.first_name}}</div>
+                <div class="card-body">{{voter.polling_station}}</div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    {% empty %}
+
+    <div class="card p-2 pl-3">
+            <div class="card-title">
+                <h4 class="text-center">No Voters</h4>
+            </div>
+        <hr>
+        <div class="card-body text-center">Add Voters <a href="#">here</a></div>
+    </div>
+{%endfor%}
+
+
+    <!--update voters modal-->
+
+     <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Update Voters</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+          <form method="post">
+    {% csrf_token %}
+      <p class="h4 text-center py-4">Sign up</p>
+      {{ form|crispy }}
+        <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-info">Update <i class="fas fa-paper-plane-o ml-1"></i></button>
+        </div>
+<!--      <div class="form-group text-center">-->
+<!--            <button class="btn btn-info" type="submit">Sign Up</button>-->
+<!--        </div>-->
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--end of modal -->
+</div>
+{%endblock content%}

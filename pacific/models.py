@@ -13,6 +13,11 @@ class Voter(models.Model):
     phone_number = models.IntegerField(default=0)
     ward = models.CharField(max_length=30)
     polling_station = models.CharField(max_length=30, default='gwasi')
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+    # def number_of_voter(self):
+    #     number= Voter.count()
+    #     return self.number
 
     def __str__(self):
         return self.first_name

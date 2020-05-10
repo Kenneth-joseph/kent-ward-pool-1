@@ -17,6 +17,7 @@ class HomePageView(ListView):
     template_name = 'home.html'
     ordering = ['-pub_date']
     context_object_name = 'events'
+    paginate_by = 10
 
 
 class VoterPageView(LoginRequiredMixin, ListView):

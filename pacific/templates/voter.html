@@ -3,15 +3,19 @@
 {%block content%}
 <div class="container">
  <h2 id="ev" style="letter-spacing:0.1em;margin-top:20px;">Voters</h2>
-    <a class="btn btn-info mr-auto" data-toggle="modal" data-target="#modalContactForm " href="{% url 'newvoter' %}" type="submit">UPDATE VOTERS</a>
+    <a href="{% url 'newvoter' %}" class="btn btn-info mr-auto" data-toggle="modal" data-target="#modalContactForm "  type="submit">UPDATE VOTERS</a>
     <hr class=" my-4">
 
     {%for voter in voters %}
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <div class="card mt-3 p-2">
-                <div class="card-title font-weight-bold" style="">{{voter.first_name}}</div>
+            <div class="jumbotron two mt-3 p-2">
+                <div class="font-weight-bold" style="">
+                    <a class = "mr-2" href="#" style="color:black;">{{voter.first_name}}&nbsp;{{voter.second_name}} </a>
+<!--                       <a class = "mr-2" href="#">{{voter.second_name}}</a>-->
+                </div>
+<!--                <a class = "mr-2" href="#">{{event.author}}</a>-->
                 <div class="card-body">{{voter.polling_station}}</div>
             </div>
         </div>

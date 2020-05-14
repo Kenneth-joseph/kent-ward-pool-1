@@ -18,6 +18,14 @@ class Voter(models.Model):
     # def number_of_voter(self):
     #     number= Voter.count()
     #     return self.number
+
+    def number_of_voter(cls):
+        voter = Voter.objects.count()
+        print(voter)
+        print("me kent")
+        return voter
+
+
     def get_absolute_url(self):
         return reverse('voter')
 

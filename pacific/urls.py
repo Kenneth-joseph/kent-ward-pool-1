@@ -10,6 +10,6 @@ urlpatterns = [
     path('newevent/', CreateEvents.as_view(), name='newevent'),
     path('voter/', VoterPageView.as_view(), name='voter'),
     path('voter/new', CreateVoter.as_view(), name='newvoter'),
-    path('voter/<int:pk>/', VoterDetailView.as_view(), name='detail'),
+    path('voter/<int:pk>/', VoterDetailView.as_view(), name='voterdetail'),
 
 ]

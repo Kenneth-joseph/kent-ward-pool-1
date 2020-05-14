@@ -14,6 +14,7 @@ from .models import Event, Voter
 #     return render(request, 'home')
 class HomePageView(ListView):
     model = Event
+    voter = Voter.objects.count()
     template_name = 'home.html'
     ordering = ['-pub_date']
     context_object_name = 'events'
@@ -39,10 +40,10 @@ class CreateEvents(LoginRequiredMixin, CreateView):
 
 class CreateVoter(LoginRequiredMixin, CreateView):
     model = Voter
-    template_name = 'voter.html'
+    template_name = 'updatevoter.html'
     fields = '__all__'
 
 
 class VoterDetailView(LoginRequiredMixin, DetailView):
     model = Voter
-    template_name = "voter.html"
+    template_name = "voterdetail.html"

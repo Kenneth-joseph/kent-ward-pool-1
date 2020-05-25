@@ -3,7 +3,8 @@
 {%block content%}
 <div class="container">
  <h2 id="ev" style="letter-spacing:0.1em;margin-top:20px;">Voters</h2>
-    <a href="{% url 'newvoter' %}" class="btn btn-info mr-auto"   type="submit">UPDATE VOTERS</a>
+    <a href="{% url 'newvoter' %}" class="btn btn-primary mr-auto"   type="submit">UPDATE VOTERS</a>
+    <p style="">voters:{{voters_list.count}}</p>
     <hr class=" my-4">
 
     {%for voter in voters %}
@@ -11,9 +12,10 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
 <!--            <p>No.{{voter.id}}</p>-->
-            <div class="jumbotron two mt-3 p-2">
-                    <a class = "mr-2 font-weight-bold" href="{%url 'voterdetail' voter.id %}" style="color:black;">{{voter.first_name}}&nbsp;{{voter.second_name}} </a>
-                    <p>{{voter.polling_station}}</p>
+            <div class="jumbotron two mt-3 p-2" style="background-color:wheat;">
+                <span style=""><i class="fas fa-user fa-2x"><a href="{%url 'voterdetail' voter.id %}"><span style="font-size:20px;vertical-align:middle;margin-left:10px;color:black" class="font-weight-light">{{voter.first_name}}&nbsp;{{voter.second_name}}</span></i></a></span>
+                  <span ><h6 class="font-weight-bold">Polling Station</h6><span style="font-size:15px;vertical-align:middle;margin-left:10px;color:black" class="font-weight-light">{{voter.polling_station}}</span></span>
+<!--                  <p>{{voter.polling_station}}</p>-->
         </div>
         </div>
         <div class="col-md-2"></div>

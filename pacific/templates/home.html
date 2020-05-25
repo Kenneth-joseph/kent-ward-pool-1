@@ -6,7 +6,7 @@
     <div class="col-md-12 col-lg-12 col-sm-12 mt-2">
         <div class="jumbotron one" style="background-color:#2471A3;letter-spacing:0.1em;">
             <h3 style="font-size:20px;  ">Welcome to the ward</h3>
-            <span id="balot" style=""><i class="fas fa-vote-yea fa-2x"><a href="{% url 'voter'%}"><span style="font-size:20px;vertical-align:middle;margin-left:10px;color:white" class="font-weight-light">4456</span></i></a></span>
+            <span id="balot" style=""><i class="fas fa-vote-yea fa-2x"><a href="{% url 'voter'%}"><span style="font-size:20px;vertical-align:middle;margin-left:10px;color:white" class="font-weight-light">Voters</span></i></a></span>
 
         </div>
     </div>
@@ -16,7 +16,7 @@
 {%for event in events %}
     <div class="card p-2 pl-3 mt-4 mb-3">
             <div class="card-metadata">
-                <a class="mr-2" href="#">{{event.author}}</a>
+                <a class="mr-2 font-weight-bold" style="font-size:18px;">{{event.author}}</a>
                 <small class="text-muted">{{event.pub_date|timesince}} AGO</small>
             </div>
 <!--        <div class=""> <a class="btn btn-info ml-auto " style="" href="" type="">edit</a></div>-->
@@ -36,16 +36,30 @@
     </div>
 {%endfor%}
 
+<!--pagination-->
+  {% if is_paginated %}
 
-    <!-- create update modal section -->
+    {% if  page_obj.has_previous %}
+    <a class=" btn btn-outline-primary mb-4" href="?page=1">First</a>
+    <a class=" btn btn-outline-primary mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {%endif%}
+  <!--showing page before and after the current page if available-->
+    {% for num in page_obj.paginator.page_range %}
 
+    {% if page_obj.number == num %}
+        <a class="btn btn-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+    {% elif num > page_obj.number|add:'-3%' and num < page_obj.number|add:'3'%}
+        <a class=" btn btn-outline-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+    {%endif%}
+    {%endfor%}
+<!--giving opption to go to the next and last page-->
 
+{% if page_obj.has_next %}
+    <a class=" btn btn-outline-primary mb-4" href="?page={{ page_obj.next_page_number }}" style="background-color:#2471A3;">Next</a>
+    <a class=" btn btn-outline-primary mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {%endif%}
 
-<!--<div class="text-center">-->
-<!--  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Launch-->
-<!--    Modal Contact Form</a>-->
-<!--</div>-->
-    <!--end--->
+    {%endif%}
 </div>
 
 {%endblock content%}

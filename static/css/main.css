@@ -17,3 +17,12 @@ margin-bottom:20px;
 .cont{
  font-family: 'Open Sans', sans-serif;
 }
+
+.card label{
+margin-left:20px;
+color:grey;
+}
+
+.btn{
+background-color:#2471A3;
+}

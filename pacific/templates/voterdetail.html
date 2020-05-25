@@ -1,15 +1,43 @@
 {%extends "base.html"%}
 {%block content%}
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <!-- Card -->
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
        <div class="card mt-5 p-3">
-           <div class="card-title">{{voter.first_name}}</div>
+           <i class="fas fa-user fa-4x text-center"></i>
+           <div class="card-title text-center mt-2 font-weight-bold" style="font-size:20px;">{{voter.first_name}} {{voter.second_name}}</div>
+           <div class="card-body ml-3">
+               <label style="font-weight:bold;" class="text-muted">Polling Station</label></br>
+                {{voter.polling_station}}
+               <hr>
+           <div class="mt-4">
+               <label style="font-weight:bold;" class="text-muted">Ward</label></br>
+                  {{voter.ward}}
+                 <hr>
+           </div>
+
+               <div class="mt-4">
+               <label style="font-weight:bold;" class="text-muted">National ID</label></br>
+                 {{voter.national_id}}
+                 <hr>
+              </div>
+
+               <div class="mt-4">
+               <label style="font-weight:bold;" class="text-muted">Contact</label></br>
+                 {{voter.phone_number}}
+                 <hr>
+           </div>
+              <div class="mt-4">
+               <label style="font-weight:bold;" class="text-muted">Date of Entry</label></br>
+                 {{voter.pub_date|timesince}} ago
+                 <hr>
+           </div>
+           </div>
        </div>
         <hr>
-        <a href="{% url 'voter' %}"  class="btn btn-info btn-small">back</a>
+        <a href="{% url 'voter' %}"  class="btn btn-primary btn-small">back</a>
     </div>
     <div class="col-md-2"></div>
 </div>

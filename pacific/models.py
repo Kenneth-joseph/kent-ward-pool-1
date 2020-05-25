@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.db.models import Count
 
 
 # Create your models here.
@@ -20,7 +21,8 @@ class Voter(models.Model):
     #     return self.number
 
     def number_of_voter(cls):
-        voter = Voter.objects.count()
+        voter = Voter.objects.all()
+        voter_total = voter.count()
         print(voter)
         print("me kent")
         return voter

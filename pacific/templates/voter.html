@@ -3,8 +3,8 @@
 {%block content%}
 <div class="container">
  <h2 id="ev" style="letter-spacing:0.1em;margin-top:20px;">Voters</h2>
-    <a href="{% url 'newvoter' %}" class="btn btn-primary mr-auto"   type="submit">UPDATE VOTERS</a>
-    <p style="">voters:{{voters_list.count}}</p>
+    <a href="{% url 'newvoter' %}" class="btn btn-primary btn-sm mr-auto"   type="submit">UPDATE VOTERS</a>
+<!--    <p style="">voters:{{voters_list.count}}</p>-->
     <hr class=" my-4">
 
     {%for voter in voters %}

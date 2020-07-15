@@ -14,7 +14,6 @@ from .models import Event, Voter
 #     return render(request, 'home')
 class HomePageView(ListView):
     model = Event
-    voter = Voter.objects.count()
     template_name = 'home.html'
     ordering = ['-pub_date']
     context_object_name = 'events'
